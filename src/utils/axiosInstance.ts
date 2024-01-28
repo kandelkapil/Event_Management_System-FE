@@ -16,9 +16,6 @@ const setBearerToken = (token: string | null) => {
     : null;
 };
 
-let isRefreshing = false;
-let failedRequests: (() => void)[] = [];
-
 // Intercept requests to attach Bearer token
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
@@ -34,37 +31,6 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Function to handle the token refresh
-const handleTokenRefresh = async () => {
-  try {
-    const refreshToken = getLocalStorageKey("token");
-
-    // Check if refreshToken is available and not expired
-    if (refreshToken) {
-      const refreshResponse = await axiosInstance.get(apiRoutes.refreshToken);
-
-      // Update the new tokens in local storage
-      setLocalStorageKey("token", refreshResponse.data.accessToken);
-
-      // Reset isRefreshing flag
-      isRefreshing = false;
-
-      // Retry the failed requests with the new token
-      failedRequests.forEach((callback) => callback());
-      failedRequests = [];
-    } else {
-      // If refreshToken is expired or not available, handle accordingly
-      console.error("Refresh token is expired or not available");
-
-    }
-  } catch (refreshError) {
-    console.error("Error refreshing token:", refreshError);
-
-    // Reset isRefreshing flag
-    isRefreshing = false;
-  }
-};
-
 // Intercept responses to handle token expiration
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -74,27 +40,35 @@ axiosInstance.interceptors.response.use(
     const originalRequest = error.config;
 
     // Check if the error is due to an expired token
-    if (error.response?.status === 401) {
-      if (!isRefreshing) {
-        isRefreshing = true;
+    if (
+      error.response?.status === 401 ||
+      (error.response?.status === 403 && !originalRequest._retry)
+    ) {
+      originalRequest._retry = true;
 
-        // Handle token refresh manually
-        await handleTokenRefresh();
+      // Attempt to refresh the token
+      try {
+        const refreshToken = getLocalStorageKey("token");
 
-        // Retry the original request with the new token
-        return axiosInstance(originalRequest);
+        // Check if refreshToken is available and not expired
+        if (refreshToken) {
+          const refreshResponse = await axiosInstance.get(
+            apiRoutes.refreshToken
+          );
+
+          // Update the new tokens in local storage
+          setLocalStorageKey("token", refreshResponse.data.accessToken);
+
+          // Retry the original request with the new token
+          originalRequest.headers["Authorization"] =
+            "Bearer " + refreshResponse.data.accessToken;
+          return axiosInstance(originalRequest);
+        }
+      } catch (refreshError) {
+        console.error("Error refreshing token:", refreshError);
       }
-
-      // Queue the original request to be retried after token refresh
-      return new Promise((resolve) => {
-        failedRequests.push(() => {
-          setBearerToken(getLocalStorageKey("token"));
-          resolve(axiosInstance(originalRequest));
-        });
-      });
     }
 
-    // If it's not a token-related error, simply reject the promise
     return Promise.reject(error);
   }
 );

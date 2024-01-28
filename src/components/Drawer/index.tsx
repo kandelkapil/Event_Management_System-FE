@@ -10,9 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { logOutService } from "./Repositories/Drawer.Remote";
 import { useAuth } from "#hooks/useAuthHook";
 
-const LoginDrawer = (user: any) => {
-  const profilePic = user?.user?.profile_pic || "";
-
+const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
   const { setUser } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
@@ -28,7 +26,7 @@ const LoginDrawer = (user: any) => {
     const logout = await logOutService();
     if (logout) {
       setUser({});
-      navigate("/");
+        navigate("/");
     }
   };
 
@@ -38,9 +36,6 @@ const LoginDrawer = (user: any) => {
   };
 
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event) {
       if (drawerRef.current && !drawerRef?.current?.contains(event.target)) {
         setDrawerOpen(false);
@@ -56,9 +51,10 @@ const LoginDrawer = (user: any) => {
 
   return (
     <>
-      {profilePic ? (
+      {/* <ToastContainer autoClose={2000} /> */}
+      {profilePicture ? (
         <img
-          src={`${import.meta.env.VITE_BASE_URL}${profilePic}`}
+          src={`${import.meta.env.VITE_BASE_URL}${profilePicture}`}
           alt="user-logo"
           onClick={handleToggleDrawer}
           className="user-logo"

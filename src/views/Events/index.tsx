@@ -4,6 +4,8 @@ import EventCard from "./components/EventCard";
 import { EventCardContainer } from "./components/EventCard.Styled";
 import useEventsListControllers from "./controllers/useEventsListControllers";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the styles
+
 
 const EventList = () => {
   const { events, eventDeleteHandler, eventRegisterHandler } =
@@ -12,7 +14,7 @@ const EventList = () => {
 
   return (
     <EventListContainer>
-      <ToastContainer autoClose={3000} newestOnTop />
+      <ToastContainer autoClose={2000} />
       <div className="wrapper">
         <button
           className="create-event"

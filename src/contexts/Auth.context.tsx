@@ -1,9 +1,11 @@
-// AuthContext.js
 import { getLocalStorageKey } from "#utils/localStorage";
 import { createContext, useEffect, useState } from "react";
 
 const initialValues = {
-  user: {},
+  user: {
+    userId: null,
+    profile_pic: null,
+  },
   setUser: () => {}, // Provide a function for setUser
 };
 
@@ -11,14 +13,21 @@ export const AuthContext = createContext(initialValues);
 
 // Create a provider component
 export const AuthProvider = ({ children }) => {
-  const id = getLocalStorageKey("userId");
+  const userId = getLocalStorageKey("userId");
   const profile_pic = getLocalStorageKey("profile");
 
-  const [user, setUser] = useState({ userId: null, profile_pic: null });
+  const [user, setUser] = useState({
+    userId: userId,
+    profile_pic: profile_pic,
+  });
 
   useEffect(() => {
-    setUser({ ...user, userId: id, profile_pic: profile_pic });
-  }, [id, profile_pic]);
+    setUser((prevUser) => ({
+      ...prevUser,
+      userId: userId,
+      profile_pic: profile_pic,
+    }));
+  }, [userId, profile_pic]);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

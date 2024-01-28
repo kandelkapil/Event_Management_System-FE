@@ -5,22 +5,16 @@ export const ERROR_MESSAGE = {
   ERROR: "error",
 };
 
-const errorHandler = (data: any, type: string) => {
+const errorHandler = (data: any, type: string) => {  
   const response = data.response;
   const responseData = response.data.message || "";
   
   switch (type) {
     case ERROR_MESSAGE.SUCCESS:
-      toast?.success(responseData, {
-        autoClose: 2000,
-        onClose: () => toast.dismiss(),
-      });
+      toast?.success(responseData, { autoClose: 2000 });
       break;
     case ERROR_MESSAGE.ERROR:
-      toast?.error(responseData, {
-        autoClose: 2000,
-        onClose: () => toast.dismiss(),
-      });
+      toast?.error(responseData, { autoClose: 2000 });
       break;
     default:
       "";

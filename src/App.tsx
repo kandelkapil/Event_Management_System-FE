@@ -4,10 +4,9 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Dashboard from "#views/Dashboard";
 import UserProfile from "#views/UserProfile";
 import SignUp from "#views/SignUp";
-import Login from "#views/Login";
+import Login from "#views/Login"; // Include Login component
 import Events from "#views/Events";
 import NavBar from "#components/NavBar";
 import CreateEvents from "#views/Events/Views/EventForm";
@@ -21,21 +20,29 @@ const App = () => {
     <Router>
       <NavBar />
       <Routes>
+        {/* Allow access to /signup only when user is not logged in */}
+        {!user?.userId && <Route path="/signup" element={<SignUp />} />}
+
+        {/* Redirect to / if user is logged in and tries to access /signup */}
+        {user?.userId && <Route path="/signup" element={<Navigate to="/" />} />}
+
+        {/* Allow access to /login for both logged-in and non-logged-in users */}
+        <Route path="/login" element={<Login />} />
+
+        {/* For other routes, redirect to /login if not logged in */}
         {!user?.userId && <Route path="*" element={<Navigate to="/login" />} />}
+
         {user?.userId && (
           <>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/signup" element={<SignUp />} />
-
+            <Route path="/" element={<UserProfile />} />
             {/* Render protected routes only when the user is logged in */}
-            <Route path="/events/*" element={<Events />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/events/create" element={<CreateEvents />} />
             <Route path="/events/edit/:id" element={<CreateEvents />} />
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/profile" element={<UserProfile />} />
           </>
         )}
-        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

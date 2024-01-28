@@ -8,6 +8,19 @@ export const EventDetailsContainer = styled.div`
   width: 100%;
   padding: 24px 0px;
 
+  .venue-time-sm {
+    display: none;
+  }
+
+  .attendees-sm {
+    display: none;
+  }
+
+  .attendees {
+    color: black;
+    font-size: 16px;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -38,7 +51,6 @@ export const EventDetailsContainer = styled.div`
       min-height: 400px;
 
       .venue-time {
-        margin-top: auto;
         color: rgb(88 66 234);
         font-size: 16px;
       }
@@ -48,10 +60,15 @@ export const EventDetailsContainer = styled.div`
         font-weight: 500;
       }
 
+      .name-sm {
+        display: none;
+      }
+
       .desc {
         font-weight: 400;
         color: rgb(153 161 177);
         font-size: 18px;
+        word-break: break-all;
       }
     }
 
@@ -61,6 +78,64 @@ export const EventDetailsContainer = styled.div`
       .event-image {
         height: 400px;
         width: 400px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .venue-time-sm {
+      display: block;
+      color: rgb(88 66 234);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .attendees-sm {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .attendees {
+      display: none;
+    }
+
+    .name {
+      display: none;
+    }
+
+    .desc {
+      margin-top: 10px;
+    }
+
+    .name-sm {
+      display: block;
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .wrapper {
+      width: 85%;
+      .event-detail-wrapper {
+        flex-direction: column-reverse;
+        width: 100%;
+        padding-top: 32px;
+        .contents {
+          width: 100%;
+
+          .venue-time {
+            display: none;
+          }
+        }
+
+        .image-container {
+          width: 100%;
+          img {
+            width: 100%;
+            height: 400px;
+          }
+        }
       }
     }
   }

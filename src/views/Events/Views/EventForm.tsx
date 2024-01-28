@@ -3,6 +3,8 @@ import useCreateEventsController from "../controllers/useCreateEventsController"
 import { EventFormContainer } from "./EventForm.Styled";
 import ImageUpload from "#components/ImageUpload";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the styles
+
 
 const EventForm = () => {
   const { handleChange, handleSubmit, formData, handleFileSelect, eventId } =
@@ -10,7 +12,7 @@ const EventForm = () => {
 
   return (
     <EventFormContainer>
-      <ToastContainer autoClose={3000} newestOnTop />
+      <ToastContainer autoClose={2000} />
       <h2>{eventId ? "Edit Event" : "Create Event"}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

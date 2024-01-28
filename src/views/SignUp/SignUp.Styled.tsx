@@ -8,6 +8,10 @@ export const SignUpContainer = styled.div`
   justify-content: center;
   background-color: #d8dafd;
 
+  form {
+    padding: 32px 100px;
+  }
+
   .errors {
     margin-top: 2px;
     font-size: 10px;
@@ -23,10 +27,6 @@ export const SignUpContainer = styled.div`
     margin-bottom: 12px !important;
   }
 
-  form {
-    padding: 22px 100px !important;
-  }
-
   .checkbox-container {
     display: flex;
     margin: 0px 0px 12px 0px;
@@ -37,6 +37,7 @@ export const SignUpContainer = styled.div`
       white-space: nowrap;
       margin-bottom: 0;
       cursor: pointer;
+      font-size: 18px;
     }
 
     .terms {
@@ -63,5 +64,10 @@ export const SignUpContainer = styled.div`
     .bolt-icon {
       margin-bottom: unset;
     }
+
+    form {
+    padding: 32px 0px
+  }
+
   }
 `;

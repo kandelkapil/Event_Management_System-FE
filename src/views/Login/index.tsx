@@ -9,6 +9,7 @@ import {
 } from "./Login.Styled";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the styles
 
 const Login = () => {
   const {
@@ -22,7 +23,7 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <ToastContainer autoClose={3000} newestOnTop />
+      <ToastContainer autoClose={2000} />
       <LoginWrapper>
         <form onSubmit={handleFormSubmit} className="login-form">
           <div className="bolt-icon">
@@ -52,7 +53,7 @@ const Login = () => {
               Password <span>*</span>
             </label>
             <input
-              type={showPassword ? "password" : "text"}
+              type={!showPassword ? "password" : "text"}
               id="password"
               name="password"
               value={formData.password}

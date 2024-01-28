@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loginService } from "../Repository/Login.remote";
 import { toast } from "react-toastify";
 import { useAuth } from "#hooks/useAuthHook";
@@ -18,6 +18,8 @@ const useSignUpController = () => {
     usernameError: "",
     passwordError: "",
   });
+
+  let timeoutId;
 
   const handleInputChange = (e) => {
     setFormData({
@@ -67,13 +69,21 @@ const useSignUpController = () => {
 
     if (login) {
       setUser({ userId: login.id, profile_pic: login.profile_pic });
-      navigate('/')
+      timeoutId = setTimeout(() => {
+        navigate("/profile");
+      }, 2000);
     }
   };
 
   const handlePasswordToggle = () => {
     setShowPassword((prev) => !prev);
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   return {
     handleInputChange,

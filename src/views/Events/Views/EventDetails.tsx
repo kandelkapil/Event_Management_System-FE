@@ -19,12 +19,22 @@ const EventDetails = () => {
           {event && (
             <>
               <div className="contents">
+                <p className="venue-time">{event?.venue_time}</p>
+                <p className="attendees">
+                  No. of attendees: {" "}
+                  {event?.attendees ? event.attendees.length : 0}
+                </p>
                 <h3 className="name">{event?.name}</h3>
                 <p className="desc">{event?.description}</p>
-                <p className="venue-time">{event?.venue_time}</p>
               </div>
 
               <div className="image-container">
+                <p className="venue-time-sm">{event?.venue_time}</p>
+                <p className="attendees-sm">
+                  No. of attendees: {" "}
+                  {event?.attendees ? event.attendees.length : 0}
+                </p>
+                <h3 className="name-sm">{event?.name}</h3>
                 <img
                   className="event-image"
                   alt="event-picture"

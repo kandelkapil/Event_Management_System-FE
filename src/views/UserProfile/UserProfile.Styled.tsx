@@ -13,6 +13,10 @@ const UserHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const UserAvatar = styled.div`
@@ -30,6 +34,13 @@ const UserAvatar = styled.div`
 
 const UserInfo = styled.div`
   width: 65%;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
 `;
 
 const UserName = styled.h2`
@@ -60,6 +71,10 @@ const InputLabel = styled.label`
   justify-content: center;
   flex-direction: column;
   width: 50%;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const InputField = styled.input`
@@ -80,6 +95,7 @@ const TextAreaField = styled.textarea`
   color: rgb(140 136 165);
   font-weight: 300;
   width: 100%;
+  resize: unset;
 `;
 
 const SubmitButton = styled.button`
@@ -99,24 +115,37 @@ const ButtonContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: flex-end;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 16px;
+  }
 `;
 
 const SaveIcon = styled.button`
-    background-color: rgb(88 66 234);
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-    padding: 10px 20px;
-    user-select: none;
-    border: 0;
+  background-color: rgb(88 66 234);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 10px 20px;
+  user-select: none;
+  border: 0;
   &:hover {
     background: #725ff5;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 const EditIcon = styled(AiOutlineEdit)`
   width: 24px;
   height: 24px;
   cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export {

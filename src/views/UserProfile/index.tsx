@@ -17,6 +17,8 @@ import {
 import ImageUpload from "#components/ImageUpload";
 import useProfileController from "./Controllers/useProfileController";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the styles
+
 
 const UserProfile = () => {
   const {
@@ -30,7 +32,7 @@ const UserProfile = () => {
 
   return (
     <UserProfileWrapper>
-      <ToastContainer autoClose={3000} newestOnTop />
+      <ToastContainer autoClose={2000} />
       <UserHeader>
         <UserAvatar>
           <ImageUpload

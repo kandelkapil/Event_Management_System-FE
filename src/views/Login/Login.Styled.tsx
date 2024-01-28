@@ -20,11 +20,10 @@ export const LoginWrapper = styled.div`
 
   form {
     display: flex;
-    overflow: scroll;
     flex-direction: column;
     width: 45%;
     height: 100%;
-    padding: 34px 100px;
+    padding: 32px 100px;
     border-radius: 12px 0px 0px 12px;
 
     .form-group-password {
@@ -119,7 +118,7 @@ export const LoginWrapper = styled.div`
 
   @media (max-width: 767px) {
     width: 80%;
-    height: 100dvh;
+    min-height: calc(100dvh - 65px);
     background-color: #d8dafd;
 
     form {

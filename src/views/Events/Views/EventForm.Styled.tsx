@@ -7,6 +7,7 @@ export const EventFormContainer = styled.div`
   align-items: center;
   padding: 32px 0px 32px 0px;
   background-color: #d8dafd;
+  min-height: calc(100vh - 65px);
 
   div.upload > div {
     width: 200px;
@@ -44,6 +45,10 @@ export const EventFormContainer = styled.div`
     svg {
       fill: #888;
     }
+  }
+
+  .form-group.upload > div {
+    background: white;
   }
 
   label {

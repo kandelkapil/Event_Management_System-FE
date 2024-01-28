@@ -3,7 +3,7 @@ import useSignUpController from "./Controllers/useSignUpController";
 import { BoltIcon, LoginWrapper } from "#views/Login/Login.Styled";
 import { Link } from "react-router-dom";
 import { SignUpContainer } from "./SignUp.Styled";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
@@ -19,7 +19,7 @@ const SignUp = () => {
   return (
     <SignUpContainer>
       <LoginWrapper>
-        <ToastContainer autoClose={3000} newestOnTop />
+        <ToastContainer autoClose={2000} />
         <form onSubmit={handleFormSubmit} className="login-form">
           <div className="bolt-icon">
             <BoltIcon></BoltIcon>

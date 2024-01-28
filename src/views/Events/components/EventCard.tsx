@@ -24,7 +24,7 @@ const EventCard = (props) => {
   const isUserRegistered = attendees?.find((i) => i?.id === user?.userId);
 
   return (
-    <EventCardContainer>
+    <EventCardContainer key={id}>
       <img className="event-picture" src={picture || ""} alt="event-picture" />
 
       <span className="venue_time">{venue_time}</span>
@@ -36,15 +36,15 @@ const EventCard = (props) => {
           attendees
             .slice(0, 2)
             .map((attendee, index) =>
-              attendee.profile_picture ? (
+              attendee.profile_pic ? (
                 <img
                   className="attendees"
-                  src={attendee?.profile_picture || ""}
+                  src={attendee?.profile_pic || ""}
                   alt={`attendee-picture-${index}`}
                   key={attendee?.id}
                 />
               ) : (
-                <div className="attendee-fallback" />
+                <div className="attendee-fallback" key={attendee?.id} />
               )
             )}
 

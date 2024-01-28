@@ -30,7 +30,24 @@ export const EventListContainer = styled.div`
     gap: 25px;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
     padding: 24px 0px;
   }
+
+  @media only screen and (max-width: 768px) {
+
+    .wrapper{
+      width: 50%;
+      align-items: center;
+    }
+
+    .create-event{
+      margin-left: unset;
+      width: fit-content;
+    }
+
+}
+
+
+
+
 `;

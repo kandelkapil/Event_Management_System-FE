@@ -9,8 +9,7 @@ export const EventCardContainer = styled.div`
   height: 325px;
   overflow: scroll;
 
-
-  .delete-event{
+  .delete-event {
     margin-left: 10px;
     margin-bottom: 10px;
     border: 0;
@@ -64,6 +63,7 @@ export const EventCardContainer = styled.div`
     border-radius: 0px 0px 16px 16px;
     overflow: hidden;
     padding: 10px 16px;
+    align-items: center;
 
     .details {
       margin-left: auto;
@@ -92,10 +92,11 @@ export const EventCardContainer = styled.div`
     background-size: cover;
   }
 
+  .attendees,
   .attendee-fallback {
     border: 0.5px solid #6a5acd;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover;

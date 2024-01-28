@@ -7,7 +7,15 @@ export const eventListMapper = (data: any) => {
     picture: i?.picture ? `${import.meta.env.VITE_BASE_URL}${i?.picture}` : "",
     venue_time: i?.venue_time || "",
     name: i?.name || "",
-    attendees: i?.attendees || [],
+    attendees:
+      i?.attendees.length > 0
+        ? i?.attendees.map((attendee) => ({
+            ...attendee,
+            profile_pic: attendee?.profile_pic
+              ? `${import.meta.env.VITE_BASE_URL}${attendee?.profile_pic}`
+              : "",
+          }))
+        : [],
     created_by: i?.created_by ? Number(i.created_by) : null,
   }));
 };

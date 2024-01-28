@@ -7,7 +7,6 @@ import { eventListMapper, eventMapper } from "../DataMapper/mapper";
 export const getEventsList = async () => {
   try {
     const result = await axiosInstance.get(`${apiRoutes.events}`);
-    // errorHandler({ response: result }, ERROR_MESSAGE.SUCCESS);
     const eventsMapper = eventListMapper(result?.data?.events);
     return eventsMapper;
   } catch (error) {
@@ -34,7 +33,6 @@ export const getEventById = async (
 ) => {
   try {
     const result = await axiosInstance.get(`${apiRoutes.events}/${id}`);
-    errorHandler({ response: result }, ERROR_MESSAGE.SUCCESS);
     const eventsMapper = eventMapper(result?.data?.event, dateStringToDate);
     return eventsMapper;
   } catch (error) {
