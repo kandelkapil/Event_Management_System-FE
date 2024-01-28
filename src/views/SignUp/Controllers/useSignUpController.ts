@@ -22,8 +22,6 @@ const useSignUpController = () => {
   };
 
   const handleFormSubmit = (e) => {
-    console.log("running");
-
     e.preventDefault();
     let hasError = false;
     const updatedErrors = {
