@@ -9,3 +9,8 @@ export const getLocalStorageKey = (key: string) => {
 
   return storedValue ? JSON.parse(storedValue) : null;
 };
+
+// Utility function to remove key from local storage
+export const removeItemFromLocalStorage = (key: string) => {
+  localStorage.removeItem(key);
+};
