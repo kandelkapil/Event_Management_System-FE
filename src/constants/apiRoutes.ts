@@ -4,5 +4,6 @@ export const apiRoutes = {
   login: "/auth/login",
   logOut: "/auth/logout",
   imageUpload: "/upload/image",
-  user:'/user'
+  user:'/user',
+  events:'/events'
 };
