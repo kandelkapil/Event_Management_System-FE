@@ -8,6 +8,7 @@ export const ERROR_MESSAGE = {
 const errorHandler = (data: any, type: string) => {
   const response = data.response;
   const responseData = response.data.message || "";
+  
   switch (type) {
     case ERROR_MESSAGE.SUCCESS:
       toast?.success(responseData, {
