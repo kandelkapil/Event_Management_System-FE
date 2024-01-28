@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { loginService } from "../Repository/Login.remote";
 import { toast } from "react-toastify";
+import { useAuth } from "#hooks/useAuthHook";
+import { useNavigate } from "react-router-dom";
 
 const useSignUpController = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({
     username: "",
@@ -22,7 +26,7 @@ const useSignUpController = () => {
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     // Validation
@@ -59,7 +63,12 @@ const useSignUpController = () => {
     }
 
     // Continue with login service if no errors
-    loginService(formData);
+    const login = await loginService(formData);
+
+    if (login) {
+      setUser({ userId: login.id, profile_pic: login.profile_pic });
+      navigate('/')
+    }
   };
 
   const handlePasswordToggle = () => {

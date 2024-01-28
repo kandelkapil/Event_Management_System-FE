@@ -12,13 +12,16 @@ export const loginService = async (payload: LoginPayload) => {
       // Assuming your server responds with a token in the response
       const token = result.data.accessToken;
       const id = result.data.id;
+      const profile_pic = result.data.profile_pic;
       setLocalStorageKey("token", token);
       setLocalStorageKey("userId", id);
+      setLocalStorageKey("profile", profile_pic);
+
       // Handle success (optional)
       errorHandler({ response: result }, ERROR_MESSAGE.SUCCESS);
     }
 
-    return result;
+    return result?.data;
   } catch (error) {
     // Handle errors
     errorHandler(error, ERROR_MESSAGE.ERROR);
