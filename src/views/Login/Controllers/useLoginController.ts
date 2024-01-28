@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { loginService } from "../Repository/Login.remote";
 import { toast } from "react-toastify";
 import { useAuth } from "#hooks/useAuthHook";
@@ -27,6 +27,8 @@ const useSignUpController = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const memoizedLoginService = useMemo(() => loginService, []); // Memoize loginService if it has dependencies
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +67,7 @@ const useSignUpController = () => {
     }
 
     // Continue with login service if no errors
-    const login = await loginService(formData);
+    const login = await memoizedLoginService(formData);
 
     if (login) {
       setUser({ userId: login.id, profile_pic: login.profile_pic });
@@ -94,4 +96,5 @@ const useSignUpController = () => {
     error,
   };
 };
+
 export default useSignUpController;

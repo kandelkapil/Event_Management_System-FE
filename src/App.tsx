@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import UserProfile from "#views/UserProfile";
 import SignUp from "#views/SignUp";
-import Login from "#views/Login"; // Include Login component
+import Login from "#views/Login";
 import Events from "#views/Events";
 import NavBar from "#components/NavBar";
 import CreateEvents from "#views/Events/Views/EventForm";
@@ -34,7 +34,7 @@ const App = () => {
 
         {user?.userId && (
           <>
-            <Route path="/" element={<UserProfile />} />
+            <Route path="/" element={<Events />} />
             {/* Render protected routes only when the user is logged in */}
             <Route path="/events" element={<Events />} />
             <Route path="/events/create" element={<CreateEvents />} />

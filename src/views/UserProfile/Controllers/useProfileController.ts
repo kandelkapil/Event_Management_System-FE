@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   getUserProfile,
   updateUserProfile,
@@ -6,7 +6,6 @@ import {
 import { ERROR_MESSAGE, errorHandler } from "#utils/errorHandler";
 import axios from "axios";
 import { apiRoutes } from "#constants/apiRoutes";
-import axiosInstance from "#utils/axiosInstance";
 import { getLocalStorageKey, setLocalStorageKey } from "#utils/localStorage";
 import { toast } from "react-toastify";
 import { useAuth } from "#hooks/useAuthHook";
@@ -84,15 +83,18 @@ const useProfileController = () => {
     }
   };
 
+  // Memoize the getUserProfile function
+  const memoizedGetUserProfile = useMemo(() => getUserProfile, []);
+
   useEffect(() => {
     if (id) {
       const getProfile = async () => {
-        const profile = await getUserProfile({ id });
+        const profile = await memoizedGetUserProfile({ id });
         setUsers(profile);
       };
       getProfile();
     }
-  }, [id]);
+  }, [id, memoizedGetUserProfile]);
 
   return {
     handleEditClick,
@@ -103,4 +105,5 @@ const useProfileController = () => {
     user,
   };
 };
+
 export default useProfileController;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import { signUpService } from "../Repository/Signup.remote";
 import { toast } from "react-toastify";
 
@@ -16,10 +16,13 @@ const useSignUpController = () => {
     passwordError: null,
   });
 
-  const validateUsername = (username: string) => {
-    const regex = /^[a-zA-Z0-9_]{3,20}$/; // Allow letters, numbers, and underscores, 3 to 20 characters
-    return regex.test(username);
-  };
+  const validateUsername = useMemo(
+    () => (username: string) => {
+      const regex = /^[a-zA-Z0-9_]{3,20}$/; // Allow letters, numbers, and underscores, 3 to 20 characters
+      return regex.test(username);
+    },
+    []
+  );
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -123,4 +126,5 @@ const useSignUpController = () => {
     error,
   };
 };
+
 export default useSignUpController;

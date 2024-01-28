@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { apiRoutes } from "#constants/apiRoutes";
 import { formatDateTime } from "#utils/dateUtils";
 import { ERROR_MESSAGE, errorHandler } from "#utils/errorHandler";
@@ -23,7 +23,6 @@ const useCreateEventsController = () => {
 
   const { id } = useParams();
 
-  // 'id' will contain the value extracted from the URL
   const eventId = parseInt(id);
 
   const { user } = useAuth();
@@ -67,10 +66,12 @@ const useCreateEventsController = () => {
     }
   };
 
+  const eventToPayloadMapper = useMemo(() => eventStateToPayloadMapper, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = eventStateToPayloadMapper(formData, dateTime, user);
+    const payload = eventToPayloadMapper(formData, dateTime, user);
     if (eventId) {
       const update = await updateEvent(eventId, payload);
       if (update) {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getEventsList, removeEvent } from "../Repositories/Events.remote";
-import { toast } from "react-toastify";
 import { registerEvent } from "../Repositories/Events.remote";
 import { useAuth } from "#hooks/useAuthHook";
 
