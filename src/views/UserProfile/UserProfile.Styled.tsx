@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { AiOutlineEdit } from "react-icons/ai";
 
 const UserProfileWrapper = styled.div`
-  height: 100vh;
   width: 80%;
   margin: 0 auto;
   padding: 80px 40px;
   background: white;
+  min-height: calc(100vh - 65px);
 `;
 
 const UserHeader = styled.div`
@@ -25,6 +25,7 @@ const UserAvatar = styled.div`
   overflow: hidden;
   margin-right: 20px;
   border: 2px solid #6a5acd;
+  resize: none;
 `;
 
 const UserInfo = styled.div`
@@ -62,18 +63,23 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
+  padding: 12px 18px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid rgb(226 224 236);
+  color: rgb(140 136 165);
+  font-weight: 300;
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  background: white;
 `;
 
 const TextAreaField = styled.textarea`
+  padding: 12px 18px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid rgb(226 224 236);
+  color: rgb(140 136 165);
+  font-weight: 300;
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  resize: none;
-  background: white;
 `;
 
 const SubmitButton = styled.button`
@@ -96,10 +102,13 @@ const ButtonContainer = styled.div`
 `;
 
 const SaveIcon = styled.button`
-  padding: 8px 16px;
-  background: #5642ea;
-  color: white;
-  width: 80px;
+    background-color: rgb(88 66 234);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 20px;
+    user-select: none;
+    border: 0;
   &:hover {
     background: #725ff5;
   }

@@ -14,7 +14,7 @@ import {
   Username,
   ButtonContainer,
 } from "./UserProfile.Styled";
-import ImageUpload from "#components/ImageUpload/Index";
+import ImageUpload from "#components/ImageUpload";
 import useProfileController from "./Controllers/useProfileController";
 import { ToastContainer } from "react-toastify";
 
@@ -39,13 +39,37 @@ const UserProfile = () => {
           />
         </UserAvatar>
         <UserInfo>
-          <UserName>{user?.name}</UserName>
+          <UserName>{`${user?.firstName || ""} ${
+            user?.lastName || ""
+          }`}</UserName>
           <Username>@{user?.username}</Username>
           <Followers>{user?.followers} Followers</Followers>
           {<EditIcon onClick={handleEditClick} />}
         </UserInfo>
       </UserHeader>
       <UserDetails>
+        <InputLabel style={!isEditing ? { cursor: "not-allowed" } : {}}>
+          First Name:
+          <InputField
+            type="text"
+            value={user?.firstName}
+            onChange={(e) => handleInputChange("firstName", e.target.value)}
+            disabled={!isEditing}
+            style={!isEditing ? { cursor: "not-allowed" } : {}}
+          />
+        </InputLabel>
+
+        <InputLabel style={!isEditing ? { cursor: "not-allowed" } : {}}>
+          Last Name:
+          <InputField
+            type="text"
+            value={user?.lastName}
+            onChange={(e) => handleInputChange("lastName", e.target.value)}
+            disabled={!isEditing}
+            style={!isEditing ? { cursor: "not-allowed" } : {}}
+          />
+        </InputLabel>
+
         <InputLabel style={!isEditing ? { cursor: "not-allowed" } : {}}>
           Address:
           <InputField

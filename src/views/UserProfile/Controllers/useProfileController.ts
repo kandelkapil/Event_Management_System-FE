@@ -7,11 +7,13 @@ import { ERROR_MESSAGE, errorHandler } from "#utils/errorHandler";
 import axios from "axios";
 import { apiRoutes } from "#constants/apiRoutes";
 import axiosInstance from "#utils/axiosInstance";
-import { getLocalStorageKey } from "#utils/localStorage";
+import { getLocalStorageKey, setLocalStorageKey } from "#utils/localStorage";
 import { toast } from "react-toastify";
+import { useAuth } from "#hooks/useAuthHook";
 
 const initialUser = {
-  name: "",
+  firstName: "",
+  lastName: "",
   username: "",
   profile_pic: "",
   followers: 0,
@@ -21,7 +23,8 @@ const initialUser = {
 };
 
 const useProfileController = () => {
-  const [user, setUser] = useState<any>(initialUser);
+  const { setUser } = useAuth();
+  const [user, setUsers] = useState<any>(initialUser);
   const [isEditing, setEditing] = useState(false);
   const id = getLocalStorageKey("userId") || null;
 
@@ -30,7 +33,7 @@ const useProfileController = () => {
   };
 
   const handleInputChange = (field, value) => {
-    setUser((prevUser) => ({
+    setUsers((prevUser) => ({
       ...prevUser,
       [field]: value,
     }));
@@ -62,6 +65,9 @@ const useProfileController = () => {
 
       const imagePath = response?.data?.path;
       if (imagePath) {
+        setLocalStorageKey("profile", imagePath);
+        setUser((prev) => ({ ...prev, profile_pic: imagePath }));
+
         toast.success(response?.data?.message);
         if (id) {
           await updateUserProfile({
@@ -82,7 +88,7 @@ const useProfileController = () => {
     if (id) {
       const getProfile = async () => {
         const profile = await getUserProfile({ id });
-        setUser(profile);
+        setUsers(profile);
       };
       getProfile();
     }
