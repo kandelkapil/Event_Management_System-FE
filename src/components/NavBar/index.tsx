@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { NavBarContainer } from "./NavBar.Styled";
 import { Link } from "react-router-dom";
 import LoginDrawer from "#components/Drawer";

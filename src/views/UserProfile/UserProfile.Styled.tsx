@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { AiOutlineEdit } from "react-icons/ai";
 
+const UserProfileContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #d8dafd;
+`;
 const UserProfileWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
   padding: 80px 40px;
-  background: white;
   min-height: calc(100vh - 65px);
 `;
 
@@ -164,4 +169,5 @@ export {
   SaveIcon,
   EditIcon,
   ButtonContainer,
+  UserProfileContainer,
 };

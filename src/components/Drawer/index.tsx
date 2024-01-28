@@ -26,7 +26,7 @@ const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
     const logout = await logOutService();
     if (logout) {
       setUser({});
-        navigate("/");
+        // navigate("/");
     }
   };
 
@@ -51,7 +51,6 @@ const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
 
   return (
     <>
-      {/* <ToastContainer autoClose={2000} /> */}
       {profilePicture ? (
         <img
           src={`${import.meta.env.VITE_BASE_URL}${profilePicture}`}
