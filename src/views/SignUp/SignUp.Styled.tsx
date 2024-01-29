@@ -37,7 +37,7 @@ export const SignUpContainer = styled.div`
       white-space: nowrap;
       margin-bottom: 0;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .terms {
