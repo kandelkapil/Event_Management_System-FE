@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Event Management System
+ 
+# Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Event Management System, a web application built with Vite, TypeScript, Styled-components for styling, and React-Toastify for displaying toasts. This project follows the MVC (Model-View-Controller) design pattern, providing a structured architecture to handle user account management, profile updates, event creation, and participation.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+User Authentication:
+  Users can create an account and log in securely.
 
-## Expanding the ESLint configuration
+Profile Management:
+  After logging in, users are directed to their profile page where they can update their personal information.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Event Listing and Creation:
+  Users can navigate to the events page to view a list of events.
+  Event creators have the ability to create new events.
 
-- Configure the top-level `parserOptions` property like this:
+Event Participation:
+  Event creators can delete their events.
+  Other users can register or cancel their participation in events.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Event Details:
+  Users can view detailed information about each event.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Project Structure
+
+The project follows the MVC pattern, which includes the following components:
+
+  Controllers:
+    Handle logic related to specific pages.
+
+  View:
+    Contains React components for rendering pages.
+
+  Repository:
+     Manages API calls and functions related to data retrieval.
+
+  DataMapper:
+    Maps data from API calls or state to appropriate formats.
+
+# Project Usage
+
+Clone the Repository:
+
+Navigate to Project Directory:
+
+create a .env from .env.example
+
+npm install
+
+# Run the Project:
+ npm start
+
+The application will be accessible at http://localhost:3000.
