@@ -53,7 +53,7 @@ const LoginDrawer = ({ profilePicture }: { profilePicture: string | null }) => {
     <>
       {profilePicture ? (
         <img
-          src={`${import.meta.env.VITE_BASE_URL}${profilePicture}`}
+          src={`${process.env.VITE_BASE_URL}${profilePicture}`}
           alt="user-logo"
           onClick={handleToggleDrawer}
           className="user-logo"

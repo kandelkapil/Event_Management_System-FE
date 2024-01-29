@@ -59,7 +59,7 @@ const useProfileController = () => {
       formData.append("image", file);
 
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}${apiRoutes.imageUpload}`,
+        `${process.env.VITE_BASE_URL}${apiRoutes.imageUpload}`,
         formData
       );
 

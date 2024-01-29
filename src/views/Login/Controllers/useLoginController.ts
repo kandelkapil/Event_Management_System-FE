@@ -19,9 +19,9 @@ const useSignUpController = () => {
     passwordError: "",
   });
 
-  let timeoutId;
+  let timeoutId: any;
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -30,7 +30,7 @@ const useSignUpController = () => {
 
   const memoizedLoginService = useMemo(() => loginService, []); // Memoize loginService if it has dependencies
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 
     // Validation
@@ -45,8 +45,7 @@ const useSignUpController = () => {
       updatedErrors.usernameError = message;
       toast.error(message, {
         onClose: () => toast.dismiss(),
-        autoClose:500,
-
+        autoClose: 500,
       });
       hasError = true;
     }
@@ -56,7 +55,7 @@ const useSignUpController = () => {
       updatedErrors.passwordError = message;
       toast.error(message, {
         onClose: () => toast.dismiss(),
-        autoClose:500,
+        autoClose: 500,
       });
       hasError = true;
     }

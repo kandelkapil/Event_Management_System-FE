@@ -8,7 +8,7 @@ export const userResponseToStateMapper = (data: any) => {
     description: data?.description || "",
     address: data?.address || "",
     profile_pic: data.profile_pic
-      ? `${import.meta.env.VITE_BASE_URL}${data?.profile_pic}`
+      ? `${process.env.VITE_BASE_URL}${data?.profile_pic}`
       : "",
   };
 };

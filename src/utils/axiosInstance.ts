@@ -7,7 +7,7 @@ import axios, {
 import { apiRoutes } from "#constants/apiRoutes";
 import { getLocalStorageKey, setLocalStorageKey } from "#utils/localStorage";
 
-const baseURL: string | any = import.meta.env.VITE_BASE_URL;
+const baseURL: string | any = process.env.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL,
