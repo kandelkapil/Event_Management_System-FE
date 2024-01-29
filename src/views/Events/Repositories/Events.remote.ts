@@ -46,7 +46,7 @@ export const registerEvent = async ({
   action,
 }: {
   eventId: number;
-  userId: number;
+  userId: any;
   action: string;
 }) => {
   try {

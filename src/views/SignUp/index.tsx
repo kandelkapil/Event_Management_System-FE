@@ -80,7 +80,7 @@ const SignUp = () => {
             <input
               className="checkbox"
               type="checkbox"
-              value={checkbox}
+              value={`${checkbox}`}
               onChange={toggleCheckbox}
               id="checkbox"
             />

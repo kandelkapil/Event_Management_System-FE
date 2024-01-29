@@ -24,7 +24,7 @@ const useCreateEventsController = () => {
 
   const { id } = useParams();
 
-  const eventId = parseInt(id);
+  const eventId = id ? parseInt(id, 10) : undefined;
 
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const useCreateEventsController = () => {
   const [formData, setFormData] = useState<EventDetails | any>(initialData);
   const [dateTime, setDateTime] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
 
     if (name === "venue_time") {
@@ -68,7 +68,7 @@ const useCreateEventsController = () => {
 
   const eventToPayloadMapper = useMemo(() => eventStateToPayloadMapper, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
 
     const payload = eventToPayloadMapper(formData, dateTime, user);

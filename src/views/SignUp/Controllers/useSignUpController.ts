@@ -24,7 +24,7 @@ const useSignUpController = () => {
     []
   );
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e:any) => {
     e.preventDefault();
     let hasError = false;
     const updatedErrors = {
@@ -112,7 +112,7 @@ const useSignUpController = () => {
     });
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

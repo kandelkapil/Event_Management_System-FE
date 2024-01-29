@@ -41,7 +41,7 @@ export const eventMapper = (data: any, dateStringToDate: boolean) => {
 export const eventStateToPayloadMapper = (
   formData: any,
   dateTime: string,
-  user: number
+  user: any
 ) => {
   const payload = {
     name: formData.name,
