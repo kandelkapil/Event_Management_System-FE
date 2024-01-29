@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import {
   Wrapper,
   AvatarOverlay,
@@ -15,11 +15,11 @@ const FileUploadComponent = ({
   image: undefined | string;
 }) => {
   const [error, setError] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const fileInputRef = useRef<any>(null);
   const acceptedTypes = ["image/jpeg", "image/png", "image/jpg"];
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e:any) => {
     const file = e.target.files[0];
 
     if (file) {

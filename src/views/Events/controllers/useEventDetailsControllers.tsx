@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { getEventById } from "../Repositories/Events.remote";
 import { EventDetails } from "../Types/types";

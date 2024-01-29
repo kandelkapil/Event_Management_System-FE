@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   getUserProfile,
   updateUserProfile,
@@ -66,7 +66,7 @@ const useProfileController = () => {
       const imagePath = response?.data?.path;
       if (imagePath) {
         setLocalStorageKey("profile", imagePath);
-        setUser((prev) => ({ ...prev, profile_pic: imagePath }));
+        setUser((prev:any) => ({ ...prev, profile_pic: imagePath }));
 
         toast.success(response?.data?.message);
         if (id) {

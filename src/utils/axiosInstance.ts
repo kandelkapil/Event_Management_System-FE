@@ -1,8 +1,13 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { apiRoutes } from "#constants/apiRoutes";
 import { getLocalStorageKey, setLocalStorageKey } from "#utils/localStorage";
 
-const baseURL: string = import.meta.env.VITE_BASE_URL;
+const baseURL: string | any = import.meta.env.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL,
@@ -13,12 +18,12 @@ const axiosInstance = axios.create({
 const setBearerToken = (token: string | null) => {
   axiosInstance.defaults.headers.common["Authorization"] = token
     ? `Bearer ${token}`
-    : null;
+    : undefined; // Use undefined instead of null
 };
 
 // Intercept requests to attach Bearer token
 axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: AxiosRequestConfig | any) => {
     const token = getLocalStorageKey("token");
 
     // Set Bearer token in request headers
@@ -37,7 +42,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error: AxiosError) => {
-    const originalRequest = error.config;
+    const originalRequest = error.config as
+      | InternalAxiosRequestConfig<any>
+      | any;
 
     // Check if the error is due to an expired token
     if (
@@ -52,9 +59,9 @@ axiosInstance.interceptors.response.use(
 
         // Check if refreshToken is available and not expired
         if (refreshToken) {
-          const refreshResponse = await axiosInstance.get(
-            apiRoutes.refreshToken
-          );
+          const refreshResponse = await axiosInstance.get<{
+            accessToken: string;
+          }>(apiRoutes.refreshToken);
 
           // Update the new tokens in local storage
           setLocalStorageKey("token", refreshResponse.data.accessToken);

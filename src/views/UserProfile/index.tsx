@@ -18,7 +18,8 @@ import {
 import ImageUpload from "#components/ImageUpload";
 import useProfileController from "./Controllers/useProfileController";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import the styles
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserProfile = () => {
   const {

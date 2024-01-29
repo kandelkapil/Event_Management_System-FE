@@ -1,4 +1,3 @@
-import React from "react";
 import useSignUpController from "./Controllers/useSignUpController";
 import { BoltIcon, LoginWrapper } from "#views/Login/Login.Styled";
 import { Link } from "react-router-dom";

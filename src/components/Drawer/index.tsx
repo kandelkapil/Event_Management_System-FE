@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   DrawerContainer,
   UserAvatar,
@@ -13,7 +13,7 @@ import { useAuth } from "#hooks/useAuthHook";
 const LoginDrawer = ({ profilePicture }: { profilePicture: string | null }) => {
   const { setUser } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const drawerRef = useRef(null);
+  const drawerRef = useRef<any>(null);
 
   const navigate = useNavigate();
 

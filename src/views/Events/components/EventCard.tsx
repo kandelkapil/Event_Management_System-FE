@@ -1,4 +1,3 @@
-import React from "react";
 import { EventCardContainer } from "./EventCard.Styled";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "#hooks/useAuthHook";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getEventsList, removeEvent } from "../Repositories/Events.remote";
 import { registerEvent } from "../Repositories/Events.remote";
 import { useAuth } from "#hooks/useAuthHook";

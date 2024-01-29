@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { apiRoutes } from "#constants/apiRoutes";
 import { formatDateTime } from "#utils/dateUtils";
 import { ERROR_MESSAGE, errorHandler } from "#utils/errorHandler";
@@ -56,7 +56,7 @@ const useCreateEventsController = () => {
       const imagePath = response?.data?.path as string;
 
       if (imagePath) {
-        setFormData((prevFormData:any) => ({
+        setFormData((prevFormData: any) => ({
           ...prevFormData,
           picture: imagePath,
         }));
