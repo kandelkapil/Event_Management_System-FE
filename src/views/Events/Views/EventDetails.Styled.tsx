@@ -8,6 +8,10 @@ export const EventDetailsContainer = styled.div`
   width: 100%;
   padding: 24px 0px;
 
+  .name-sm {
+    display: none;
+  }
+
   .venue-time-sm {
     display: none;
   }
@@ -58,10 +62,6 @@ export const EventDetailsContainer = styled.div`
       .name {
         font-size: 32px;
         font-weight: 500;
-      }
-
-      .name-sm {
-        display: none;
       }
 
       .desc {

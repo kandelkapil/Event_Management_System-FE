@@ -6,13 +6,13 @@ const initialValues = {
     userId: null,
     profile_pic: null,
   },
-  setUser: () => {}, // Provide a function for setUser
+  setUser: () => {},
 };
 
 export const AuthContext = createContext(initialValues);
 
 // Create a provider component
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: { children: any }) => {
   const userId = getLocalStorageKey("userId");
   const profile_pic = getLocalStorageKey("profile");
 

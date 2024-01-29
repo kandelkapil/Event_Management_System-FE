@@ -3,7 +3,7 @@ import { EventCardContainer } from "./EventCard.Styled";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "#hooks/useAuthHook";
 
-const EventCard = (props) => {
+const EventCard = (props: any) => {
   const {
     picture,
     venue_time,
@@ -21,7 +21,7 @@ const EventCard = (props) => {
     navigate(`/events/${id}`);
   };
 
-  const isUserRegistered = attendees?.find((i) => i?.id === user?.userId);
+  const isUserRegistered = attendees?.find((i: any) => i?.id === user?.userId);
 
   return (
     <EventCardContainer key={id}>
@@ -35,7 +35,7 @@ const EventCard = (props) => {
         {attendees.length > 0 &&
           attendees
             .slice(0, 2)
-            .map((attendee, index) =>
+            .map((attendee: any, index: number) =>
               attendee.profile_pic ? (
                 <img
                   className="attendees"
@@ -52,16 +52,13 @@ const EventCard = (props) => {
           <div className="attendee-fallback">+{attendees.length - 2}</div>
         )}
 
-        <span className="details" onClick={() => handleDetailsClick(id)}>
+        <span className="details" onClick={handleDetailsClick}>
           More details
         </span>
       </div>
 
       {createdBy && user?.userId === createdBy ? (
-        <button
-          className="delete-event"
-          onClick={() => eventDeleteHandler(id)}
-        >
+        <button className="delete-event" onClick={() => eventDeleteHandler(id)}>
           Delete Event
         </button>
       ) : !isUserRegistered ? (

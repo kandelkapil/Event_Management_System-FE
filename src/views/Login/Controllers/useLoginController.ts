@@ -45,6 +45,8 @@ const useSignUpController = () => {
       updatedErrors.usernameError = message;
       toast.error(message, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
+
       });
       hasError = true;
     }
@@ -54,6 +56,7 @@ const useSignUpController = () => {
       updatedErrors.passwordError = message;
       toast.error(message, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     }
@@ -73,7 +76,7 @@ const useSignUpController = () => {
       setUser({ userId: login.id, profile_pic: login.profile_pic });
       timeoutId = setTimeout(() => {
         navigate("/profile");
-      }, 2000);
+      }, 500);
     }
   };
 

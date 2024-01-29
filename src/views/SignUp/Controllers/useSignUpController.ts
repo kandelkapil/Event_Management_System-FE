@@ -38,6 +38,7 @@ const useSignUpController = () => {
       updatedErrors.usernameError = emptyUsername;
       toast.error(emptyUsername, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     } else if (!validateUsername(formData.username)) {
@@ -46,6 +47,7 @@ const useSignUpController = () => {
       updatedErrors.usernameError = userNameValidation;
       toast.error(userNameValidation, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     }
@@ -55,6 +57,7 @@ const useSignUpController = () => {
       updatedErrors.emailError = emailError;
       toast.error(emailError, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     }
@@ -64,6 +67,7 @@ const useSignUpController = () => {
       updatedErrors.passwordError = emptyPassword;
       toast.error(emptyPassword, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     } else if (formData.password.length < 8) {
@@ -71,6 +75,7 @@ const useSignUpController = () => {
       updatedErrors.passwordError = passwordLengthError;
       toast.error(passwordLengthError, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     } else if (
@@ -83,6 +88,7 @@ const useSignUpController = () => {
       updatedErrors.passwordError = passwordValidationError;
       toast.error(passwordValidationError, {
         onClose: () => toast.dismiss(),
+        autoClose:500,
       });
       hasError = true;
     }

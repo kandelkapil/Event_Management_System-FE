@@ -7,7 +7,13 @@ import {
   AvatarImage,
 } from "./ImageUpload.styled"; // Import your styles
 
-const FileUploadComponent = ({ onFileSelect, image }) => {
+const FileUploadComponent = ({
+  onFileSelect,
+  image,
+}: {
+  onFileSelect: (file: File) => void;
+  image: undefined | string;
+}) => {
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef<any>(null);

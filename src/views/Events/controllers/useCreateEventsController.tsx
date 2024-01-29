@@ -11,6 +11,7 @@ import {
 import { useAuth } from "#hooks/useAuthHook";
 import { useNavigate, useParams } from "react-router-dom";
 import { eventStateToPayloadMapper } from "../DataMapper/mapper";
+import { EventDetails } from "../Types/types";
 
 const useCreateEventsController = () => {
   const initialData = {
@@ -28,7 +29,7 @@ const useCreateEventsController = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState(initialData);
+  const [formData, setFormData] = useState<EventDetails | any>(initialData);
   const [dateTime, setDateTime] = useState("");
 
   const handleChange = (e) => {
@@ -55,14 +56,13 @@ const useCreateEventsController = () => {
       const imagePath = response?.data?.path as string;
 
       if (imagePath) {
-        setFormData((prevFormData) => ({
+        setFormData((prevFormData:any) => ({
           ...prevFormData,
           picture: imagePath,
         }));
       }
     } catch (error) {
       errorHandler(error, ERROR_MESSAGE.ERROR);
-      console.error("Error posting image to backend:", error);
     }
   };
 

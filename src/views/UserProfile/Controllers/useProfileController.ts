@@ -9,6 +9,7 @@ import { apiRoutes } from "#constants/apiRoutes";
 import { getLocalStorageKey, setLocalStorageKey } from "#utils/localStorage";
 import { toast } from "react-toastify";
 import { useAuth } from "#hooks/useAuthHook";
+import { UserProfile } from "../Types/types";
 
 const initialUser = {
   firstName: "",
@@ -23,7 +24,7 @@ const initialUser = {
 
 const useProfileController = () => {
   const { setUser } = useAuth();
-  const [user, setUsers] = useState<any>(initialUser);
+  const [user, setUsers] = useState<UserProfile | any>(initialUser);
   const [isEditing, setEditing] = useState(false);
   const id = getLocalStorageKey("userId") || null;
 
@@ -31,8 +32,8 @@ const useProfileController = () => {
     setEditing(true);
   };
 
-  const handleInputChange = (field, value) => {
-    setUsers((prevUser) => ({
+  const handleInputChange = (field: string, value: any) => {
+    setUsers((prevUser: any) => ({
       ...prevUser,
       [field]: value,
     }));
@@ -45,7 +46,7 @@ const useProfileController = () => {
     delete updateUser.profile_pic;
 
     if (id) {
-      const data = await updateUserProfile({
+      await updateUserProfile({
         ...updateUser,
         id,
       });
@@ -79,7 +80,6 @@ const useProfileController = () => {
       // Handle the response from the backend as needed
     } catch (error) {
       errorHandler(error, ERROR_MESSAGE.ERROR);
-      console.error("Error posting image to backend:", error);
     }
   };
 

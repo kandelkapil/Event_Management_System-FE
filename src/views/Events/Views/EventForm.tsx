@@ -12,7 +12,7 @@ const EventForm = () => {
 
   return (
     <EventFormContainer>
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={500} />
       <h2>{eventId ? "Edit Event" : "Create Event"}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

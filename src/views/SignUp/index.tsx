@@ -19,7 +19,7 @@ const SignUp = () => {
   return (
     <SignUpContainer>
       <LoginWrapper>
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={500} />
         <form onSubmit={handleFormSubmit} className="login-form">
           <div className="bolt-icon">
             <BoltIcon></BoltIcon>

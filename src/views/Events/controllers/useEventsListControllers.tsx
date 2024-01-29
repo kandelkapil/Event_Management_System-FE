@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getEventsList, removeEvent } from "../Repositories/Events.remote";
 import { registerEvent } from "../Repositories/Events.remote";
 import { useAuth } from "#hooks/useAuthHook";
+import { EventList } from "../Types/types";
 
 const useEventsListControllers = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<EventList[] | any>([]);
   const {
     user: { userId },
   } = useAuth();

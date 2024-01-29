@@ -11,10 +11,10 @@ const errorHandler = (data: any, type: string) => {
   
   switch (type) {
     case ERROR_MESSAGE.SUCCESS:
-      toast?.success(responseData, { autoClose: 2000 });
+      toast?.success(responseData, { autoClose: 500 });
       break;
     case ERROR_MESSAGE.ERROR:
-      toast?.error(responseData, { autoClose: 2000 });
+      toast?.error(responseData, { autoClose: 500 });
       break;
     default:
       "";

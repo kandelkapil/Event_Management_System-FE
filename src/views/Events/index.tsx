@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { EventListContainer } from "./EventList.Styled";
 import EventCard from "./components/EventCard";
-import { EventCardContainer } from "./components/EventCard.Styled";
 import useEventsListControllers from "./controllers/useEventsListControllers";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the styles
-
 
 const EventList = () => {
   const { events, eventDeleteHandler, eventRegisterHandler } =
@@ -14,7 +12,7 @@ const EventList = () => {
 
   return (
     <EventListContainer>
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={500} />
       <div className="wrapper">
         <button
           className="create-event"
@@ -23,7 +21,7 @@ const EventList = () => {
           Create Event
         </button>
         <div className="events-container">
-          {events?.map((event) => (
+          {events?.map((event: any) => (
             <EventCard
               picture={event?.picture}
               venue_time={event?.venue_time}

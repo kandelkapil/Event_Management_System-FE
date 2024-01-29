@@ -33,7 +33,7 @@ const UserProfile = () => {
   return (
     <UserProfileContainer>
       <UserProfileWrapper>
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={500} />
         <UserHeader>
           <UserAvatar>
             <ImageUpload

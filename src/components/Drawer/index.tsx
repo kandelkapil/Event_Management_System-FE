@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { logOutService } from "./Repositories/Drawer.Remote";
 import { useAuth } from "#hooks/useAuthHook";
 
-const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
+const LoginDrawer = ({ profilePicture }: { profilePicture: string | null }) => {
   const { setUser } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
@@ -26,7 +26,7 @@ const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
     const logout = await logOutService();
     if (logout) {
       setUser({});
-        // navigate("/");
+      // navigate("/");
     }
   };
 
@@ -36,7 +36,7 @@ const LoginDrawer = ({ profilePicture }: { profilePicture: string }) => {
   };
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    function handleClickOutside(event: any) {
       if (drawerRef.current && !drawerRef?.current?.contains(event.target)) {
         setDrawerOpen(false);
       }
