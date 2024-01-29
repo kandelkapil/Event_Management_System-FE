@@ -12,6 +12,7 @@ export default {
     "^#hooks/(.*)$": "<rootDir>/src/hooks/$1",
     "^#assets/(.*)$": "<rootDir>/src/assets/$1",
     "^#views/(.*)$": "<rootDir>/src/views/$1",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
   transform: {
     "^.+\\.tsx?$": [
