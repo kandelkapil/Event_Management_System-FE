@@ -50,6 +50,8 @@ Navigate to Project Directory:
 
 create a .env from .env.example
 
+Node version 18 or higher required
+
 npm install
 
 # Run the Project:
